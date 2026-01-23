@@ -10,28 +10,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #93c5fd;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --primary-bg: rgba(37, 99, 235, 0.08);
             --secondary: #06b6d4;
             --accent: #8b5cf6;
-            --dark: #111827;
+            --dark: #1f2937;
             --light: #f9fafb;
-            --gray: #4b5563;
+            --gray: #6b7280;
             --gray-light: #e5e7eb;
             --gray-bg: #f3f4f6;
             --card-bg: #ffffff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 10px 25px rgba(59, 130, 246, 0.15);
-            --border-radius: 12px;
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #f1f5f9;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 25px rgba(37, 99, 235, 0.1);
+            --shadow-large: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+            --border-radius-lg: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            --gradient-light: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 0.75rem;
-            --spacing-lg: 1rem;
-            --spacing-xl: 1.5rem;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.875rem;
+            --spacing-md: 1.25rem;
+            --spacing-lg: 1.75rem;
+            --spacing-xl: 2.5rem;
+        }
+
+        .theme-dark {
+            --primary: #60a5fa;
+            --primary-dark: #3b82f6;
+            --primary-light: #93c5fd;
+            --primary-bg: rgba(96, 165, 250, 0.1);
+            --secondary: #22d3ee;
+            --accent: #a78bfa;
+            --dark: #f9fafb;
+            --light: #111827;
+            --gray: #9ca3af;
+            --gray-light: #374151;
+            --gray-bg: #1f2937;
+            --card-bg: #1e293b;
+            --sidebar-bg: #0f172a;
+            --sidebar-text: #f1f5f9;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 10px 25px rgba(37, 99, 235, 0.2);
+            --shadow-large: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -44,41 +68,37 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--gray-bg);
             color: var(--dark);
-            line-height: 1.5;
+            line-height: 1.6;
             font-size: 0.95rem;
-            padding: var(--spacing-lg);
+            padding: var(--spacing-md);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: var(--spacing-lg);
             background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-large);
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 95vh;
             position: relative;
+            transition: var(--transition);
+            width: 100%;
         }
 
-        /* Blue Dot Indicators - FIXED SIZE & POSITION */
-        .blue-dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: var(--primary);
-            border-radius: 50%;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        /* Header - Left Sidebar */
         .sidebar {
-            background: var(--gradient);
-            color: white;
-            padding: var(--spacing-xl);
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: var(--spacing-xl) var(--spacing-lg);
             display: flex;
             flex-direction: column;
             gap: var(--spacing-lg);
@@ -89,31 +109,31 @@
         .sidebar::before {
             content: '';
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.05);
+            top: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 50%;
         }
 
         .profile {
             text-align: center;
             padding-bottom: var(--spacing-md);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             margin: 0 auto var(--spacing-md);
             overflow: hidden;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            background: #f0f0f0;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #2d3748;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -126,25 +146,28 @@
         }
 
         .profile-img .placeholder {
-            font-size: 3rem;
-            color: var(--primary);
+            font-size: 3.5rem;
+            color: var(--primary-light);
         }
 
         .profile h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: var(--spacing-xs);
             letter-spacing: -0.5px;
+            color: white;
         }
 
         .profile h2 {
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             opacity: 0.9;
             background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             display: inline-block;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .contact-info {
@@ -160,8 +183,8 @@
             align-items: center;
             gap: var(--spacing-sm);
             font-size: 0.85rem;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .contact-item:last-child {
@@ -172,42 +195,34 @@
             width: 16px;
             text-align: center;
             color: var(--primary-light);
+            font-size: 0.9rem;
         }
 
         .contact-item a {
-            color: white;
+            color: var(--sidebar-text);
             text-decoration: none;
-            transition: var(--transition);
             flex: 1;
-        }
-
-        .contact-item a:hover {
-            opacity: 0.8;
-            transform: translateX(4px);
+            opacity: 0.9;
+            font-size: 0.85rem;
         }
 
         .copy-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
             width: 24px;
             height: 24px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 0.7rem;
-            opacity: 0;
-            transition: var(--transition);
+            opacity: 0.7;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .contact-item:hover .copy-btn {
-            opacity: 1;
-        }
-
         .skills-section {
-            margin-top: var(--spacing-md);
+            margin-top: var(--spacing-sm);
             position: relative;
             z-index: 1;
         }
@@ -221,10 +236,18 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-xs);
+            color: var(--primary-light);
         }
 
         .section-title i {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .skill-tags {
@@ -234,32 +257,24 @@
         }
 
         .skill-tag {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 5px 12px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 10px;
+            border-radius: 16px;
             font-size: 0.75rem;
             font-weight: 500;
-            transition: var(--transition);
-            cursor: default;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .skill-tag:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content - Right Panel */
         .main-content {
             padding: var(--spacing-xl);
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-xl);
+            gap: var(--spacing-lg);
         }
 
-        /* Compact Section Styling */
         .section {
-            margin-bottom: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
             position: relative;
         }
 
@@ -271,10 +286,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: var(--spacing-md);
-            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
             border-bottom: 2px solid var(--gray-light);
-            position: relative;
         }
 
         .section-header h3 {
@@ -288,62 +302,56 @@
 
         .section-header h3 i {
             color: var(--primary);
-            background: var(--gradient-light);
-            width: 32px;
-            height: 32px;
+            background: var(--primary-bg);
+            width: 36px;
+            height: 36px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
         }
 
         .toggle-section {
-            background: var(--gray-light);
-            border: none;
+            background: var(--gray-bg);
             color: var(--gray);
-            cursor: pointer;
+            border: 1px solid var(--gray-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
             font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            transition: var(--transition);
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
-            flex-shrink: 0;
-            margin-left: var(--spacing-sm);
+            gap: 6px;
         }
 
-        .toggle-section:hover {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-        }
-
-        /* Education & Experience Items - COMPLETELY FIXED */
         .timeline-item {
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
             position: relative;
-            transition: var(--transition);
-            cursor: pointer;
-            border-radius: 8px;
-            padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 32px;
+            padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-        }
-
-        .timeline-item:hover {
-            background: var(--gradient-light);
+            background: var(--card-bg);
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 12px;
-            top: 14px;
-            width: 8px;
-            height: 8px;
+            left: 16px;
+            top: 18px;
+            width: 10px;
+            height: 10px;
             background: var(--primary);
             border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--primary-bg);
         }
 
         .item-content {
@@ -356,6 +364,7 @@
             font-size: 0.95rem;
             color: var(--dark);
             margin-bottom: 4px;
+            line-height: 1.3;
         }
 
         .item-subtitle {
@@ -375,106 +384,101 @@
             font-size: 0.8rem;
             color: white;
             background: var(--primary);
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 4px 10px;
+            border-radius: 16px;
             font-weight: 600;
             white-space: nowrap;
             margin-left: var(--spacing-sm);
             flex-shrink: 0;
-            text-align: center;
-            height: fit-content;
         }
 
-        /* Projects */
         .project-item {
             margin-bottom: var(--spacing-md);
             padding: var(--spacing-md);
             border-radius: var(--border-radius);
             background: var(--gray-bg);
-            transition: var(--transition);
-            cursor: pointer;
-            border-left: 4px solid var(--primary);
+            border: 1px solid var(--gray-light);
             position: relative;
+            padding-bottom: calc(var(--spacing-md) + 60px);
         }
 
-        .project-item:hover {
-            transform: translateX(6px);
-            box-shadow: var(--shadow-hover);
+        .project-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 8px;
         }
 
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .project-details {
+            font-size: 0.85rem;
+            color: var(--dark);
+            margin-top: var(--spacing-sm);
+            padding-left: 16px;
+        }
+
+        .project-details li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0;
+        }
+
+        .tech-tag {
+            background: var(--primary-bg);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--primary-light);
+        }
+
+        /* VIEW DETAILS BUTTON - Added back */
         .project-view-btn {
             position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: var(--primary);
-            color: white;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--gradient);
+            color: white !important;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            padding: 12px 16px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            font-size: 0.9rem;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 4px;
-            opacity: 0;
-        }
-
-        .project-item:hover .project-view-btn {
-            opacity: 1;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            z-index: 10;
+            width: 100%;
+            margin: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .project-view-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            color: white !important;
+            border-top-color: rgba(255, 255, 255, 0.3);
         }
 
-        .project-title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--dark);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .project-tech {
-            font-size: 0.75rem;
-            color: var(--gray);
-            background: white;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-
-        .project-desc {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .project-details {
-            font-size: 0.8rem;
-            color: var(--dark);
-            padding-left: 16px;
-        }
-
-        .project-details li {
-            margin-bottom: 4px;
-            position: relative;
-        }
-
-        .project-details li::before {
-            content: '▸';
-            position: absolute;
-            left: -12px;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Certifications Grid */
         .certs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -484,22 +488,21 @@
         .cert-item {
             padding: var(--spacing-sm);
             background: var(--gray-bg);
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             font-size: 0.85rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border-top: 3px solid var(--primary);
-        }
-
-        .cert-item:hover {
-            background: var(--gradient-light);
-            transform: translateY(-4px);
+            border-top: 4px solid var(--primary);
+            border: 1px solid var(--gray-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
         }
 
         .cert-name {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
         }
 
         .cert-org {
@@ -507,18 +510,77 @@
             color: var(--gray);
         }
 
-        /* Summary */
         .summary {
-            background: var(--gradient-light);
+            background: var(--primary-bg);
             padding: var(--spacing-md);
             border-radius: var(--border-radius);
             font-size: 0.9rem;
             line-height: 1.6;
-            border-left: 4px solid var(--primary);
-            position: relative;
+            border-left: 5px solid var(--primary);
+            color: var(--dark);
         }
 
-        /* Popup Modal */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.8rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: #10b981;
+            padding: 4px 10px;
+            border-radius: 16px;
+            margin-left: var(--spacing-sm);
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 15px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+            z-index: 100;
+            font-size: 1.1rem;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+            z-index: 100;
+            font-size: 1.1rem;
+        }
+
+        /* Popup Styles */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -529,11 +591,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .popup-overlay.active {
@@ -542,99 +604,139 @@
         }
 
         .popup-content {
-            background: white;
+            background: var(--card-bg);
             width: 90%;
-            max-width: 900px;
+            max-width: 800px;
             max-height: 85vh;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-            display: flex;
-            transform: translateY(30px);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .popup-overlay.active .popup-content {
-            transform: translateY(0);
-        }
-
-        .popup-left {
-            flex: 1;
-            background: var(--gradient);
-            padding: var(--spacing-xl);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--gray-light);
             position: relative;
         }
 
-        .popup-right {
-            flex: 1.5;
-            padding: var(--spacing-xl);
-            overflow-y: auto;
-            background: #f8fafc;
+        .popup-overlay.active .popup-content {
+            transform: translateY(0) scale(1);
         }
 
         .popup-close {
             position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: rgba(255, 255, 255, 0.2);
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.2);
             border: none;
             color: white;
             width: 36px;
             height: 36px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1rem;
-            z-index: 10;
+            font-size: 0.9rem;
+            z-index: 100;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .popup-close:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.3);
             transform: rotate(90deg);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .popup-body {
+            padding: var(--spacing-lg);
+            overflow-y: auto;
+            max-height: 85vh;
+            background: var(--card-bg);
         }
 
         .popup-title {
             font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: var(--spacing-sm);
-            color: white;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
         .popup-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            color: var(--gray);
             margin-bottom: var(--spacing-lg);
-            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .popup-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .popup-tech span {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .popup-download-btn {
+            background: var(--gradient);
+            color: white !important;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: var(--spacing-lg) 0 var(--spacing-xl) 0;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .popup-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
         }
 
         .popup-section {
             margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .popup-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .popup-section h4 {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            padding-bottom: 6px;
-            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+            gap: var(--spacing-sm);
         }
 
         .popup-section h4 i {
             color: var(--primary);
-            background: rgba(59, 130, 246, 0.1);
-            width: 30px;
-            height: 30px;
+            background: rgba(37, 99, 235, 0.1);
+            width: 32px;
+            height: 32px;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -642,116 +744,39 @@
         }
 
         .popup-section p, .popup-section li {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
             margin-bottom: var(--spacing-sm);
-            color: #374151;
+            color: var(--dark);
+            font-weight: 500;
         }
 
         .popup-section ul {
-            padding-left: var(--spacing-lg);
+            padding-left: var(--spacing-md);
         }
 
         .popup-section li {
             margin-bottom: 8px;
-            position: relative;
         }
 
-        .popup-section li:before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-            font-size: 1.2rem;
+        .theme-dark .popup-section p,
+        .theme-dark .popup-section li {
+            color: #e5e7eb;
         }
 
-        .popup-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
-        }
-
-        .popup-tech span {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Download Button in Popup */
-        .popup-download-btn {
-            position: absolute;
-            bottom: var(--spacing-xl);
-            left: var(--spacing-xl);
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .popup-download-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* Print Button */
-        .print-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-            z-index: 100;
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-
-        .print-btn:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.6);
-        }
-
-        /* Status Indicator */
-        .status {
-            display: inline-flex;
-            align-items: center;
-            font-size: 0.8rem;
-            background: rgba(59, 130, 246, 0.1);
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-left: var(--spacing-sm);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
+        /* ============ MOBILE FIXES ============ */
+        @media (max-width: 1000px) {
+            body {
+                padding: var(--spacing-sm);
+                display: block;
+            }
+            
             .container {
                 grid-template-columns: 1fr;
                 gap: 0;
+                max-width: 100%;
+                min-height: auto;
+                border-radius: var(--border-radius);
             }
             
             .sidebar {
@@ -760,108 +785,383 @@
             
             .main-content {
                 padding: var(--spacing-lg);
+                gap: var(--spacing-md);
+            }
+            
+            .profile h1 {
+                font-size: 1.5rem;
+            }
+            
+            .profile h2 {
+                font-size: 0.9rem;
+            }
+            
+            .section-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h3 i {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .project-view-btn {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+            
+            .theme-toggle {
+                bottom: 70px;
+                right: 12px;
+                width: 48px;
+                height: 48px;
+                font-size: 1rem;
+            }
+            
+            .print-btn {
+                bottom: 15px;
+                right: 12px;
+                width: 48px;
+                height: 48px;
+                font-size: 1rem;
+            }
+            
+            .popup-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+            
+            .popup-body {
+                padding: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 12px;
+            }
+            
+            .sidebar, .main-content {
+                padding: 15px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile h1 {
+                font-size: 1.3rem;
+            }
+            
+            .contact-item {
+                font-size: 0.82rem;
+            }
+            
+            .contact-item a {
+                font-size: 0.82rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .btn-group {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding-left: 32px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+            
+            .timeline-item::before {
+                left: 14px;
+                top: 16px;
+                width: 8px;
+                height: 8px;
+            }
+            
+            .item-title {
+                font-size: 0.9rem;
+            }
+            
+            .item-subtitle {
+                font-size: 0.82rem;
+            }
+            
+            .item-details {
+                font-size: 0.82rem;
+            }
+            
+            .item-date {
+                margin-left: 0;
+                margin-top: 4px;
+                font-size: 0.75rem;
+                padding: 3px 8px;
+            }
+            
+            .project-details {
+                padding-left: 14px;
+                font-size: 0.82rem;
+            }
+            
+            .project-details li {
+                font-size: 0.82rem;
+            }
+            
+            .project-view-btn {
+                padding: 8px 12px;
+                font-size: 0.82rem;
             }
             
             .certs-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .popup-content {
-                flex-direction: column;
-                width: 95%;
-                max-height: 90vh;
+            .popup-title {
+                font-size: 1.5rem;
             }
             
-            .popup-left {
-                padding: var(--spacing-lg);
+            .popup-subtitle {
+                font-size: 0.9rem;
             }
             
             .popup-download-btn {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                margin-top: var(--spacing-lg);
-                width: fit-content;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .theme-toggle {
+                bottom: 65px;
+                right: 10px;
+                width: 46px;
+                height: 46px;
+            }
+            
+            .print-btn {
+                bottom: 12px;
+                right: 10px;
+                width: 46px;
+                height: 46px;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             body {
-                padding: var(--spacing-sm);
+                padding: 10px;
             }
             
             .container {
-                border-radius: 0;
+                border-radius: 10px;
+            }
+            
+            .sidebar, .main-content {
+                padding: 12px;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile h1 {
+                font-size: 1.2rem;
+            }
+            
+            .profile h2 {
+                font-size: 0.85rem;
+                padding: 5px 10px;
+            }
+            
+            .contact-item {
+                font-size: 0.8rem;
+            }
+            
+            .section-header h3 {
+                font-size: 1rem;
+            }
+            
+            .section-header h3 i {
+                width: 30px;
+                height: 30px;
+                font-size: 0.85rem;
+            }
+            
+            .toggle-section {
+                font-size: 0.75rem;
+                padding: 6px 10px;
             }
             
             .timeline-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--spacing-xs);
-                padding-left: 32px;
+                padding-left: 28px;
+            }
+            
+            .timeline-item::before {
+                left: 12px;
+            }
+            
+            .item-title {
+                font-size: 0.85rem;
+            }
+            
+            .item-subtitle {
+                font-size: 0.8rem;
             }
             
             .item-date {
-                margin-left: 0;
-                margin-top: var(--spacing-xs);
-                align-self: flex-start;
+                font-size: 0.7rem;
+                padding: 2px 6px;
+            }
+            
+            .project-title {
+                font-size: 1rem;
+            }
+            
+            .project-desc {
+                font-size: 0.85rem;
+            }
+            
+            .project-details {
+                padding-left: 12px;
+                font-size: 0.8rem;
+            }
+            
+            .project-view-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 3px 8px;
             }
             
             .certs-grid {
                 grid-template-columns: 1fr;
             }
             
-            .project-view-btn {
-                opacity: 1;
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-top: var(--spacing-sm);
+            .cert-item {
+                padding: 10px;
+            }
+            
+            .summary {
+                padding: 12px;
+                font-size: 0.85rem;
             }
             
             .popup-content {
                 width: 100%;
                 max-height: 100vh;
                 border-radius: 0;
+                margin: 0;
             }
             
-            .section-header {
-                flex-wrap: wrap;
-                gap: var(--spacing-sm);
+            .popup-body {
+                padding: 15px;
             }
             
-            .toggle-section {
-                margin-left: 0;
-                margin-top: var(--spacing-xs);
+            .popup-title {
+                font-size: 1.3rem;
+            }
+            
+            .popup-close {
+                top: 10px;
+                right: 10px;
+                width: 32px;
+                height: 32px;
+            }
+            
+            .theme-toggle {
+                bottom: 60px;
+                right: 8px;
+                width: 44px;
+                height: 44px;
+                font-size: 0.95rem;
+            }
+            
+            .print-btn {
+                bottom: 10px;
+                right: 8px;
+                width: 44px;
+                height: 44px;
+                font-size: 0.95rem;
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 360px) {
+            .profile h1 {
+                font-size: 1.1rem;
+            }
+            
+            .contact-item a {
+                font-size: 0.78rem;
+            }
+            
+            .item-title {
+                font-size: 0.82rem;
+            }
+            
+            .project-view-btn {
+                font-size: 0.78rem;
+                padding: 5px 8px;
+            }
+            
+            .theme-toggle {
+                bottom: 55px;
+                right: 6px;
+                width: 42px;
+                height: 42px;
+            }
+            
+            .print-btn {
+                bottom: 8px;
+                right: 6px;
+                width: 42px;
+                height: 42px;
+            }
         }
 
-        .section {
-            animation: fadeInUp 0.5s ease-out forwards;
-            animation-delay: calc(var(--order) * 0.1s);
-            opacity: 0;
+        @media print {
+            .theme-toggle,
+            .print-btn,
+            .toggle-section,
+            .copy-btn,
+            .project-view-btn,
+            .popup-overlay {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <button class="print-btn" id="print-btn" title="Download Resume PDF">
+        <i class="fas fa-download"></i>
+    </button>
+
     <div class="container">
-        <!-- Left Sidebar -->
         <aside class="sidebar">
             <div class="profile">
                 <div class="profile-img">
-                    <img src="my-photo.jpg" alt="Jeshwanth Varma" onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';">
+                    <img src="my-photo.jpg" alt="Jeshwanth Varma">
                     <div class="placeholder" style="display: none;">
                         <i class="fas fa-user"></i>
                     </div>
                 </div>
                 <h1>JESHWANTH VARMA M.V</h1>
-                <h2>Cloud Engineer <span class="status"><span class="blue-dot"></span> Available</span></h2>
+                <h2>Cloud Engineer <span class="status"><span class="status-dot"></span> Available</span></h2>
             </div>
 
             <div class="contact-info">
@@ -888,7 +1188,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/jeshwanth-varma/">linkedin</a>
+                    <a href="https://www.linkedin.com/in/jeshwanth-varma/">linkedin.com/in/jeshwanth-varma</a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-globe"></i>
@@ -911,7 +1211,7 @@
                     <span class="skill-tag">CI/CD</span>
                     <span class="skill-tag">Docker</span>
                     <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Web Dev</span>
+                    <span class="skill-tag">Web Development</span>
                     <span class="skill-tag">AI Tools</span>
                     <span class="skill-tag">Power BI</span>
                     <span class="skill-tag">CloudFormation</span>
@@ -926,32 +1226,32 @@
                     <span class="skill-tag">Problem Solving</span>
                     <span class="skill-tag">Adaptability</span>
                     <span class="skill-tag">Time Management</span>
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Critical Thinking</span>
                 </div>
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Professional Summary -->
             <section class="section" style="--order: 1">
                 <div class="section-header">
-                    <h3><i class="fas fa-user"></i> Professional Summary</h3>
+                    <h3><i class="fas fa-user-tie"></i> Professional Summary</h3>
                 </div>
                 <div class="summary">
-                    <span class="blue-dot"></span> Proactive and detail-oriented BCA graduate, currently pursuing an MCA with a strong academic foundation in computer applications and a commitment to continuous learning. Seeking an entry-level role to apply technical knowledge, problem-solving skills, and teamwork to contribute effectively to organizational success. Known for a strong work ethic, adaptability, and eagerness to embrace challenges.
+                    Proactive and detail-oriented BCA graduate, currently pursuing an MCA with a strong academic foundation in computer applications and a commitment to continuous learning. Seeking an entry-level role to apply technical knowledge, problem-solving skills, and teamwork to contribute effectively to organizational success. Known for a strong work ethic, adaptability, and eagerness to embrace challenges.
                 </div>
             </section>
 
-            <!-- Education - COMPLETELY FIXED -->
             <section class="section" style="--order: 2">
                 <div class="section-header">
                     <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                    <button class="toggle-section expand-icon">
-                        <i class="fas fa-chevron-down"></i> Expand
-                    </button>
+                    <div class="btn-group">
+                        <button class="toggle-section expand-btn">
+                            <i class="fas fa-chevron-down"></i> Expand All
+                        </button>
+                    </div>
                 </div>
                 <div class="section-content">
-                    <!-- MCA - Fixed typo -->
                     <div class="timeline-item">
                         <div class="item-content">
                             <div class="item-title">MCA - Master of Computer Applications</div>
@@ -961,7 +1261,6 @@
                         <div class="item-date">2024 - 2026</div>
                     </div>
                     
-                    <!-- BCA -->
                     <div class="timeline-item">
                         <div class="item-content">
                             <div class="item-title">BCA - Bachelor of Computer Applications</div>
@@ -971,7 +1270,6 @@
                         <div class="item-date">2021 - 2024</div>
                     </div>
                     
-                    <!-- Intermediate - Fixed typo -->
                     <div class="timeline-item">
                         <div class="item-content">
                             <div class="item-title">Intermediate</div>
@@ -980,7 +1278,6 @@
                         <div class="item-date">2019 - 2021</div>
                     </div>
                     
-                    <!-- Schooling - Fixed typo -->
                     <div class="timeline-item">
                         <div class="item-content">
                             <div class="item-title">Schooling</div>
@@ -991,13 +1288,14 @@
                 </div>
             </section>
 
-            <!-- Work Experience -->
             <section class="section" style="--order: 3">
                 <div class="section-header">
                     <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
-                    <button class="toggle-section expand-icon">
-                        <i class="fas fa-chevron-down"></i> Expand
-                    </button>
+                    <div class="btn-group">
+                        <button class="toggle-section expand-btn">
+                            <i class="fas fa-chevron-down"></i> Expand All
+                        </button>
+                    </div>
                 </div>
                 <div class="section-content">
                     <div class="timeline-item">
@@ -1007,16 +1305,16 @@
                         </div>
                         <div class="item-date">Jan 2023 – Dec 2023</div>
                     </div>
-                    <div class="project-details" style="margin-top: var(--spacing-md); padding-left: 32px;">
-                        <li><span class="blue-dot"></span> Assisted in design, development, and deployment of cloud-based solutions using AWS, Google Cloud</li>
-                        <li><span class="blue-dot"></span> Participated in migration of on-premises applications to cloud environments</li>
-                        <li><span class="blue-dot"></span> Developed and maintained cloud infrastructure using AWS CloudFormation</li>
-                        <li><span class="blue-dot"></span> Collaborated with cross-functional teams for deployments and testing</li>
-                        <li><span class="blue-dot"></span> Implemented automated backup and disaster recovery solutions (RAID)</li>
-                        <li><span class="blue-dot"></span> Developed scripts for automating routine tasks, improving efficiency</li>
-                        <li><span class="blue-dot"></span> Successfully migrated applications to cloud, reducing costs and improving performance</li>
-                    </div>
-                    <div class="skill-tags" style="margin-top: 10px; padding-left: 32px;">
+                    <ul class="project-details" style="margin-top: 5px; margin-bottom: 0;">
+                        <li>Assisted in design, development, and deployment of cloud-based solutions using AWS, Google Cloud</li>
+                        <li>Participated in migration of on-premises applications to cloud environments</li>
+                        <li>Developed and maintained cloud infrastructure using AWS CloudFormation</li>
+                        <li>Collaborated with cross-functional teams for deployments and testing</li>
+                        <li>Implemented automated backup and disaster recovery solutions (RAID)</li>
+                        <li>Developed scripts for automating routine tasks, improving efficiency</li>
+                        <li>Successfully migrated applications to cloud, reducing costs and improving performance</li>
+                    </ul>
+                    <div class="skill-tags" style="margin-top: 10px; margin-bottom: 0;">
                         <span class="skill-tag">AWS</span>
                         <span class="skill-tag">Google Cloud</span>
                         <span class="skill-tag">CloudFormation</span>
@@ -1024,62 +1322,87 @@
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">PHP</span>
                         <span class="skill-tag">CloudWatch</span>
+                        <span class="skill-tag">Automation</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Projects -->
             <section class="section" style="--order: 4">
                 <div class="section-header">
                     <h3><i class="fas fa-project-diagram"></i> Projects</h3>
-                    <button class="toggle-section expand-icon">
-                        <i class="fas fa-chevron-down"></i> Expand
-                    </button>
+                    <div class="btn-group">
+                        <button class="toggle-section expand-btn">
+                            <i class="fas fa-chevron-down"></i> Expand All
+                        </button>
+                    </div>
                 </div>
                 <div class="section-content">
                     <div class="project-item" data-project="movie-master">
                         <div class="project-title">
                             The Movie Master: Cloud-Based Search Engine
-                            <span class="project-tech">AWS • MongoDB • REST APIs</span>
                         </div>
-                        <div class="project-desc">A cloud-based search engine offering swift access to comprehensive movie information from IMDb API with real-time data updates and user-friendly interface.</div>
+                        <div class="project-desc">
+                            A cloud-based search engine offering swift access to comprehensive movie information from IMDb API with real-time data updates and user-friendly interface.
+                        </div>
+                        
+                        <ul class="project-details">
+                            <li>Led project from inception to deployment</li>
+                            <li>Developed backend infrastructure on AWS</li>
+                            <li>Implemented search algorithms with MongoDB</li>
+                            <li>Designed responsive user interface</li>
+                            <li>Reduced search latency by 60%</li>
+                            <li>Handled 10,000+ daily requests</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">REST APIs</span>
+                        </div>
+                        
                         <button class="project-view-btn">
-                            <i class="fas fa-expand-alt"></i> View Details
+                            <i class="fas fa-external-link-alt"></i> View Details
                         </button>
-                        <div class="project-details">
-                            <li><span class="blue-dot"></span> Led project from inception to deployment</li>
-                            <li><span class="blue-dot"></span> Developed backend infrastructure on AWS</li>
-                            <li><span class="blue-dot"></span> Implemented search algorithms with MongoDB</li>
-                            <li><span class="blue-dot"></span> Designed responsive user interface</li>
-                        </div>
                     </div>
                     
                     <div class="project-item" data-project="twitter-analysis">
                         <div class="project-title">
                             Twitter Intent Analysis with Deep Learning
-                            <span class="project-tech">AWS • Machine Learning • Twitter API</span>
                         </div>
-                        <div class="project-desc">Advanced system to analyze user intent from Twitter data using deep learning techniques for sentiment analysis and intent classification.</div>
+                        <div class="project-desc">
+                            Advanced system to analyze user intent from Twitter data using deep learning techniques for sentiment analysis and intent classification.
+                        </div>
+                        
+                        <ul class="project-details">
+                            <li>Designed intuitive user interface</li>
+                            <li>Integrated machine learning algorithms</li>
+                            <li>Implemented real-time data collection</li>
+                            <li>Deployed model on AWS for scalability</li>
+                            <li>Achieved 92% accuracy in intent classification</li>
+                            <li>Real-time processing of 5000+ tweets/hour</li>
+                        </ul>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Twitter API</span>
+                        </div>
+                        
                         <button class="project-view-btn">
-                            <i class="fas fa-expand-alt"></i> View Details
+                            <i class="fas fa-external-link-alt"></i> View Details
                         </button>
-                        <div class="project-details">
-                            <li><span class="blue-dot"></span> Designed intuitive user interface</li>
-                            <li><span class="blue-dot"></span> Integrated machine learning algorithms</li>
-                            <li><span class="blue-dot"></span> Implemented real-time data collection</li>
-                            <li><span class="blue-dot"></span> Deployed model on AWS for scalability</li>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Certifications -->
             <section class="section" style="--order: 5">
                 <div class="section-header">
                     <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <button class="toggle-section expand-icon">
-                        <i class="fas fa-chevron-down"></i> Expand
-                    </button>
+                    <div class="btn-group">
+                        <button class="toggle-section expand-btn">
+                            <i class="fas fa-chevron-down"></i> Expand All
+                        </button>
+                    </div>
                 </div>
                 <div class="section-content">
                     <div class="certs-grid">
@@ -1103,38 +1426,26 @@
                             <div class="cert-name">Business Development</div>
                             <div class="cert-org">Coursera</div>
                         </div>
+                        <div class="cert-item">
+                            <div class="cert-name">AWS Fundamentals</div>
+                            <div class="cert-org">Amazon Web Services</div>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- Print Button -->
-    <button class="print-btn" title="Print Resume">
-        <i class="fas fa-print"></i>
-    </button>
-
-    <!-- Project 1 Popup -->
+    <!-- Movie Master Popup -->
     <div class="popup-overlay" id="movie-master-popup">
         <div class="popup-content">
             <button class="popup-close">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="popup-left">
-                <div class="popup-title">The Movie Master</div>
+            
+            <div class="popup-body">
+                <h2 class="popup-title">The Movie Master</h2>
                 <div class="popup-subtitle">Cloud-Based Movie Search Engine</div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-calendar-alt"></i> Project Timeline</h4>
-                    <p>January 2024 – April 2024 (4 Months)</p>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-trophy"></i> Key Achievements</h4>
-                    <p>• Reduced search latency by 60%</p>
-                    <p>• Handled 10,000+ daily requests</p>
-                    <p>• Achieved 99.8% uptime on AWS</p>
-                </div>
                 
                 <div class="popup-tech">
                     <span>AWS EC2</span>
@@ -1145,90 +1456,51 @@
                     <span>CloudFront</span>
                 </div>
                 
-                <!-- Download Button -->
                 <a href="About the movie master.pdf" class="popup-download-btn" download>
                     <i class="fas fa-download"></i> Download Project Report
                 </a>
-            </div>
-            
-            <div class="popup-right">
+                
                 <div class="popup-section">
                     <h4><i class="fas fa-info-circle"></i> Project Overview</h4>
                     <p>The Movie Master is a comprehensive cloud-based search engine designed to provide users with instant access to detailed movie information. The platform aggregates data from multiple sources including IMDb API and provides a seamless search experience with advanced filtering options.</p>
                 </div>
                 
                 <div class="popup-section">
-                    <h4><i class="fas fa-tasks"></i> My Responsibilities</h4>
+                    <h4><i class="fas fa-tasks"></i> Key Responsibilities</h4>
                     <ul>
                         <li>Led the full project lifecycle from requirements gathering to deployment</li>
                         <li>Designed and implemented the cloud architecture on AWS</li>
                         <li>Developed RESTful APIs for data retrieval and search functionality</li>
                         <li>Integrated MongoDB for efficient data storage and retrieval</li>
-                        <li>Implemented caching mechanisms using Redis for performance optimization</li>
+                        <li>Implemented caching mechanisms for performance optimization</li>
                         <li>Created responsive UI with React and deployed using AWS Amplify</li>
                     </ul>
                 </div>
                 
                 <div class="popup-section">
-                    <h4><i class="fas fa-cogs"></i> Technical Implementation</h4>
-                    <p><strong>Backend:</strong> Node.js with Express.js framework</p>
-                    <p><strong>Database:</strong> MongoDB Atlas with aggregation pipelines</p>
-                    <p><strong>Cloud Services:</strong> AWS EC2, S3, CloudFront, Route 53</p>
-                    <p><strong>APIs:</strong> Integrated IMDb API with custom caching layer</p>
-                    <p><strong>Search Algorithm:</strong> Implemented fuzzy search with text indexing</p>
-                    <p><strong>Frontend:</strong> React with Material-UI components</p>
-                    <p><strong>Deployment:</strong> Docker containers orchestrated with AWS ECS</p>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-chart-line"></i> Results & Impact</h4>
+                    <h4><i class="fas fa-trophy"></i> Achievements</h4>
                     <ul>
+                        <li>Reduced search latency by 60%</li>
+                        <li>Handled 10,000+ daily requests</li>
+                        <li>Achieved 99.8% uptime on AWS</li>
                         <li>Successfully deployed with zero downtime migration</li>
                         <li>Reduced server costs by 40% using AWS auto-scaling</li>
-                        <li>Improved search response time from 2s to 0.8s</li>
-                        <li>Implemented CI/CD pipeline reducing deployment time by 70%</li>
-                        <li>Scaled to handle 10,000+ concurrent users during peak hours</li>
-                        <li>Implemented comprehensive monitoring with CloudWatch alerts</li>
-                    </ul>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-code-branch"></i> Key Features</h4>
-                    <ul>
-                        <li>Real-time movie search with auto-suggestions</li>
-                        <li>Advanced filtering by genre, rating, year, and language</li>
-                        <li>User ratings and review system</li>
-                        <li>Watchlist and favorites functionality</li>
-                        <li>Mobile-responsive design</li>
-                        <li>Dark/light mode toggle</li>
-                        <li>Social media sharing integration</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Project 2 Popup -->
+    <!-- Twitter Analysis Popup -->
     <div class="popup-overlay" id="twitter-analysis-popup">
         <div class="popup-content">
             <button class="popup-close">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="popup-left">
-                <div class="popup-title">Twitter Intent Analysis</div>
+            
+            <div class="popup-body">
+                <h2 class="popup-title">Twitter Intent Analysis</h2>
                 <div class="popup-subtitle">Deep Learning for Social Media Analytics</div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-calendar-alt"></i> Project Timeline</h4>
-                    <p>March 2024 – June 2024 (3 Months)</p>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-trophy"></i> Key Achievements</h4>
-                    <p>• 92% accuracy in intent classification</p>
-                    <p>• Real-time processing of 5000+ tweets/hour</p>
-                    <p>• Published research paper on methodology</p>
-                </div>
                 
                 <div class="popup-tech">
                     <span>Python</span>
@@ -1239,20 +1511,17 @@
                     <span>FastAPI</span>
                 </div>
                 
-                <!-- Download Button -->
                 <a href="About Twitter Intent Analysis.pdf" class="popup-download-btn" download>
                     <i class="fas fa-download"></i> Download Project Report
                 </a>
-            </div>
-            
-            <div class="popup-right">
+                
                 <div class="popup-section">
                     <h4><i class="fas fa-info-circle"></i> Project Overview</h4>
                     <p>This system analyzes Twitter data to classify user intentions using advanced deep learning techniques. It can distinguish between informational queries, opinions, recommendations, complaints, and promotional content, providing valuable insights for social media monitoring and customer service automation.</p>
                 </div>
                 
                 <div class="popup-section">
-                    <h4><i class="fas fa-tasks"></i> My Responsibilities</h4>
+                    <h4><i class="fas fa-tasks"></i> Key Responsibilities</h4>
                     <ul>
                         <li>Designed and trained LSTM neural networks for text classification</li>
                         <li>Implemented data preprocessing pipeline for Twitter data</li>
@@ -1260,56 +1529,17 @@
                         <li>Created REST API for prediction serving using FastAPI</li>
                         <li>Deployed model on AWS SageMaker for scalable inference</li>
                         <li>Built dashboard for visualizing intent analysis results</li>
-                        <li>Implemented model versioning and A/B testing capabilities</li>
                     </ul>
                 </div>
                 
                 <div class="popup-section">
-                    <h4><i class="fas fa-cogs"></i> Technical Implementation</h4>
-                    <p><strong>ML Framework:</strong> TensorFlow 2.x with Keras API</p>
-                    <p><strong>Model Architecture:</strong> Bi-directional LSTM with attention mechanism</p>
-                    <p><strong>Data Processing:</strong> NLTK for text preprocessing, BERT embeddings</p>
-                    <p><strong>Deployment:</strong> AWS SageMaker, Lambda, API Gateway</p>
-                    <p><strong>Frontend:</strong> React dashboard with real-time updates</p>
-                    <p><strong>Database:</strong> Amazon DynamoDB for storing analysis results</p>
-                    <p><strong>Monitoring:</strong> CloudWatch for model performance tracking</p>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-chart-line"></i> Results & Impact</h4>
+                    <h4><i class="fas fa-trophy"></i> Achievements</h4>
                     <ul>
-                        <li>Achieved 92.3% accuracy on test dataset</li>
+                        <li>Achieved 92% accuracy in intent classification</li>
+                        <li>Real-time processing of 5000+ tweets/hour</li>
+                        <li>Published research paper on methodology</li>
                         <li>Reduced inference time to under 100ms per tweet</li>
-                        <li>Successfully processed 50,000+ tweets during testing</li>
-                        <li>Published findings in IEEE conference proceedings</li>
-                        <li>Model currently being used for social media trend analysis</li>
                         <li>Reduced manual content moderation effort by 65%</li>
-                    </ul>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-code-branch"></i> Key Features</h4>
-                    <ul>
-                        <li>Real-time tweet streaming and processing</li>
-                        <li>Intent classification into 7 distinct categories</li>
-                        <li>Sentiment analysis with emotion detection</li>
-                        <li>Topic modeling and trend identification</li>
-                        <li>Interactive dashboard with data visualization</li>
-                        <li>Export functionality for analysis reports</li>
-                        <li>Custom alerting system for specific intents</li>
-                    </ul>
-                </div>
-                
-                <div class="popup-section">
-                    <h4><i class="fas fa-brain"></i> Machine Learning Details</h4>
-                    <ul>
-                        <li>Dataset: 500,000 labeled tweets across 7 intent categories</li>
-                        <li>Training: 80/10/10 split for train/validation/test</li>
-                        <li>Model: Bi-LSTM with 256 units, attention layer</li>
-                        <li>Embeddings: Pre-trained BERT embeddings fine-tuned</li>
-                        <li>Optimization: Adam optimizer with learning rate scheduling</li>
-                        <li>Regularization: Dropout (0.5) and L2 regularization</li>
-                        <li>Evaluation: Precision, Recall, F1-score, Confusion Matrix</li>
                     </ul>
                 </div>
             </div>
@@ -1317,8 +1547,26 @@
     </div>
 
     <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('theme-dark');
+            
+            if (document.body.classList.contains('theme-dark')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeToggle.title = 'Switch to Light Mode';
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeToggle.title = 'Switch to Dark Mode';
+            }
+        });
+
         // Collapsible sections
-        document.querySelectorAll('.toggle-section').forEach(button => {
+        document.querySelectorAll('.expand-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const section = this.closest('.section');
                 const content = section.querySelector('.section-content');
@@ -1326,12 +1574,12 @@
                 
                 if (content.style.display === 'none' || !content.style.display) {
                     content.style.display = 'block';
-                    this.innerHTML = '<i class="fas fa-chevron-up"></i> Collapse';
+                    this.innerHTML = '<i class="fas fa-chevron-up"></i> Collapse All';
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-up');
                 } else {
                     content.style.display = 'none';
-                    this.innerHTML = '<i class="fas fa-chevron-down"></i> Expand';
+                    this.innerHTML = '<i class="fas fa-chevron-down"></i> Expand All';
                     icon.classList.remove('fa-chevron-up');
                     icon.classList.add('fa-chevron-down');
                 }
@@ -1355,18 +1603,36 @@
             });
         });
 
-        // Interactive timeline items
-        document.querySelectorAll('.timeline-item, .project-item, .cert-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (!e.target.closest('.project-view-btn') && !e.target.closest('a')) {
-                    this.classList.toggle('active');
-                }
-            });
-        });
-
-        // Print functionality
-        document.querySelector('.print-btn').addEventListener('click', function() {
-            window.print();
+        // Download PDF functionality
+        document.getElementById('print-btn').addEventListener('click', function() {
+            // Create download link for existing PDF
+            const link = document.createElement('a');
+            link.href = 'jeshwanth varma mv resume.pdf';
+            link.download = 'jeshwanth varma mv resume.pdf';
+            
+            // Show loading state
+            const originalHTML = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Restore button after download
+            setTimeout(() => {
+                this.innerHTML = originalHTML;
+                
+                // Show success message
+                const originalTitle = this.title;
+                this.title = 'Downloaded!';
+                this.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    this.title = originalTitle;
+                    this.style.background = '';
+                }, 2000);
+            }, 1000);
         });
 
         // Project popups
@@ -1412,64 +1678,8 @@
                 content.style.display = 'block';
             });
             
-            document.querySelectorAll('.toggle-section').forEach(btn => {
-                btn.innerHTML = '<i class="fas fa-chevron-up"></i> Collapse';
-            });
-            
-            // Check if image exists
-            const profileImg = document.querySelector('.profile-img img');
-            if (profileImg) {
-                fetch('my-photo.jpg')
-                    .then(response => {
-                        if (!response.ok) {
-                            profileImg.style.display = 'none';
-                            const placeholder = document.querySelector('.profile-img .placeholder');
-                            if (placeholder) placeholder.style.display = 'flex';
-                        }
-                    })
-                    .catch(() => {
-                        profileImg.style.display = 'none';
-                        const placeholder = document.querySelector('.profile-img .placeholder');
-                        if (placeholder) placeholder.style.display = 'flex';
-                    });
-            }
-        });
-
-        // Add clickable links
-        document.querySelectorAll('.contact-item a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                }
-            });
-        });
-
-        // Hover effects for skill tags
-        document.querySelectorAll('.skill-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px)';
-            });
-            
-            tag.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Download button confirmation
-        document.querySelectorAll('.popup-download-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const filename = this.getAttribute('href');
-                console.log(`Downloading: ${filename}`);
-                // In a real implementation, this would trigger the actual download
-                // For demo purposes, we'll just show a notification
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Download Started';
-                this.style.background = '#10b981';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.background = '';
-                }, 2000);
+            document.querySelectorAll('.expand-btn').forEach(btn => {
+                btn.innerHTML = '<i class="fas fa-chevron-up"></i> Collapse All';
             });
         });
     </script>
